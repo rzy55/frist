@@ -28,4 +28,9 @@ public interface NewsDao {
 	
 	//5.根据Id删除新闻
 	public int deleteNews(int nid) throws SQLException;
+	
+	//根据分页查看新闻
+	public List<News> getNewsByPage(int contPage,int pageSize) throws SQLException;
+	
+	public List<News> getNewsByCondition(News news) throws SQLException;
 }
