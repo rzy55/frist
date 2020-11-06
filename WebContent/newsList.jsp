@@ -10,5 +10,24 @@
 	新闻ID：${newsById.nid}<br>
 	新闻标题：${newsById.ntitle}<br>
 	新闻内容：${newsById.ncontent}<br>
+	
+	<h3>评论</h3>
+	<c:if test="${commentsByNid != null}">
+		<c:forEach items="${commentsByNid}" var="comment">
+			留言人：${comment.cauthor}  <br>
+			留言内容：${comment.ccontent}  <br>
+			留言时间：${comment.cdate}<br>
+			<hr>
+		</c:forEach>
+	</c:if>
+	<form action="${pageContext.request.contextPath}/AddCommentServlet" method="post">
+			留言人：<input type="text" name="cauthor"><br>
+			IP：<input type="text" name="cip" readonly="readonly" value="${pageContext.request.remoteAddr}"><br>
+			<input type="hidden" name="cnid" value="${newsById.nid}"><br>
+			<textarea rows="10" cols="100" name="ccontent"  onblur = "validateMess(this)">
+			
+			</textarea><span id="mess"> </span><br>
+			<input type="submit">
+	</form>
 </body>
 </html>

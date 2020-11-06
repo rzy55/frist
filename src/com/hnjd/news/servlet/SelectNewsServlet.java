@@ -1,14 +1,19 @@
 package com.hnjd.news.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hnjd.news.dao.CommentsDao;
+import com.hnjd.news.dao.CommentsDaoImpl;
 import com.hnjd.news.dao.NewsDao;
 import com.hnjd.news.dao.NewsDaoImpl;
+import com.hnjd.news.entity.Comment;
 import com.hnjd.news.entity.News;
 
 /**
@@ -33,17 +38,25 @@ public class SelectNewsServlet extends HttpServlet {
 		
 		String nidStr = request.getParameter("nid");
 		Integer nid = Integer.valueOf(nidStr);
-		
+		String option = request.getParameter("option");
+		String target = "/newsList.jsp";
+		if("edit".equals(option)) {
+			target = "/editNews.jsp";
+		}
 		NewsDao newsDao = new NewsDaoImpl();
 		News newsById = new News();
+		
+		CommentsDao commentsDao=new CommentsDaoImpl();
 		try {
 			newsById = newsDao.getNewsById(nid);
+			List<Comment> commentsByNid = commentsDao.getCommentsById(nid);
 			request.setAttribute("newsById", newsById);
+			request.setAttribute("commentsByNid", commentsByNid);
 		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("/newsList.jsp").forward(request, response);
+		request.getRequestDispatcher(target).forward(request, response);
 	}
 
 	/**

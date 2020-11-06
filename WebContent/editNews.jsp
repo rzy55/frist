@@ -15,11 +15,11 @@
 			<option value="3">军事</option>
 		</select>
 		<br/>
-		新闻标题：<input type="text" name="ntitle"><br/>
-		新闻作者：<input type="text" name="nauthor"><br/>
-		图片地址：<input type="text" name="npicPath">
-		新闻内容：<textarea name="ncontent" rows="10" cols="20"></textarea>
-		新闻概括：<textarea name="nsummary" rows="10" cols="20"></textarea>
+		新闻标题：<input type="text" name="ntitle" value="${newsById.ntitle}"><br/>
+		新闻作者：<input type="text" name="nauthor" value="${newsById.nauthor}"><br/>
+		图片地址：<input type="text" name="npicPath" value="${newsById.npicPath}"><br>
+		新闻内容：<textarea name="ncontent" rows="10" cols="20">${newsById.ncontent}</textarea><br>
+		新闻概括：<textarea name="nsummary" rows="10" cols="20">${newsById.nsummary}</textarea><br>
 		<input type="submit">
 	</form>
 </body>
