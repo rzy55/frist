@@ -46,7 +46,7 @@
 					<td>${news.ncreateDate}</td>
 					<td>${news.nmodifyDate}</td>
 					<td>	
-						<a href="editNews.jsp">修改</a>
+						<a href="${pageContext.request.contextPath}/selectNewsServlet?nid=${news.nid}&option=edit">修改</a>
 						<a href="${pageContext.request.contextPath}/deleteNewsServlet?nid=${news.nid}">删除</a>
 					</td>
 				</tr>
