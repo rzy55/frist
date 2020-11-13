@@ -24,7 +24,9 @@
 		List<News> newsList = newsDao.getAllNews();
 	%>
 		<!-- for(int news = 0;i<items.length;news++) -->
-		
+		<c:forEach items="topicDao" >
+		    <a>${topicDao.tname}</a>
+		</c:forEach>
 	
 	<form action="${pageContext.request.contextPath}/deleteNewsServlet" method="post">
 		<table>
