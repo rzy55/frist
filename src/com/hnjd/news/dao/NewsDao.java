@@ -33,4 +33,6 @@ public interface NewsDao {
 	public List<News> getNewsByPage(int contPage,int pageSize) throws SQLException;
 	
 	public List<News> getNewsByCondition(News news) throws SQLException;
+	
+	public List<News> getNewsByTid(int tid) throws SQLException;
 }

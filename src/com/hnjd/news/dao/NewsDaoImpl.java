@@ -194,4 +194,25 @@ public class NewsDaoImpl extends BaseDao implements NewsDao {
 		return newsList;
 	}
 
+	@Override
+	public List<News> getNewsByTid(int tid) throws SQLException {
+		String sql = "select * from news where ntid = ? ";
+		ResultSet res = excuteQuery(sql, tid);
+		List<News> newsList = new ArrayList<News>();
+		while(res.next()) {
+			News newsObj = new News();
+			newsObj.setNid(res.getInt("nid"));
+			newsObj.setNtitle(res.getString("ntitle"));
+			newsObj.setNsummary(res.getString("nsummary"));
+			newsObj.setNpicPath(res.getString("npicPath"));
+			newsObj.setNcreateDate(res.getDate("ncreateDate"));
+			newsObj.setNmodifyDate(res.getDate("nmodifyDate"));
+			newsObj.setNcontent(res.getString("ncontent"));
+			newsObj.setNauthor(res.getString("nauthor"));
+			newsObj.setNtid(res.getInt("ntid"));
+			newsList.add(newsObj);
+		}
+		return newsList;
+	}
+
 }
