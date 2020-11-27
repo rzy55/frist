@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,6 @@
 	新闻标题：${newsById.ntitle}<br>
 	新闻内容：${newsById.ncontent}<br>
 	
-	<h3>评论</h3>
 	<div if="comment">
 	<c:if test="${commentsByNid != null}">
 		<c:forEach items="${commentsByNid}" var="comment">
@@ -22,6 +22,9 @@
 		</c:forEach>
 	</c:if>
 	</div>
+	
+	<h3>评论</h3>
+
 	<form action="${pageContext.request.contextPath}/AddCommentServlet" method="post">
 			留言人：<input type="text" name="cauthor"><br>
 			IP：<input type="text" name="cip" readonly="readonly" value="${pageContext.request.remoteAddr}"><br>

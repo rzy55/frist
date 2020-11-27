@@ -4,6 +4,8 @@
 <%@ page import="com.hnjd.news.dao.NewsDao" %>
 <%@ page import="com.hnjd.news.dao.NewsDaoImpl" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.hnjd.news.entity.*" %>
+<%@ page import="com.hnjd.news.dao.*" %>
 <%@ page import="com.hnjd.news.entity.News" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,11 +24,15 @@
 	<%
 		NewsDao newsDao = new NewsDaoImpl();
 		List<News> newsList = newsDao.getAllNews();
-	%>
+		TopicDaoImpl topic = new TopicDaoImpl();	
+		List<Topic> topiclist = topic.allTopic();
+	%>	
 		<!-- for(int news = 0;i<items.length;news++) -->
-		<c:forEach items="topicDao" >
-		    <a>${topicDao.tname}</a>
+		<c:forEach items="<%=topiclist %>" var="topiclist" >
+		    <a href="javascript:void(0)">${topiclist.tname}</a>
 		</c:forEach>
+	
+	<a href="${pageContext.request.contextPath }/PageNewsServlet?contPage=1&pageSize=10">分页查询</a>
 	
 	<form action="${pageContext.request.contextPath}/deleteNewsServlet" method="post">
 		<table>

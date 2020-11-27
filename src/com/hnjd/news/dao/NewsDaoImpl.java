@@ -147,7 +147,7 @@ public class NewsDaoImpl extends BaseDao implements NewsDao {
 		List<News> newsList=new ArrayList<News>();
 		String sql="select * from news limit ?,?";
 		ResultSet rs = excuteQuery(sql, 
-				(contPage-1)*pageSize,
+				contPage*pageSize-9,
 				pageSize);
 		while(rs.next()) {
 			News news = new News();
@@ -162,7 +162,7 @@ public class NewsDaoImpl extends BaseDao implements NewsDao {
 			news.setNtid(rs.getInt("ntid"));
 			newsList.add(news);
 		}
-		return null;
+		return newsList;
 	}
 
 	@Override

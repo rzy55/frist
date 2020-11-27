@@ -65,5 +65,13 @@ public class Page {
 			this.totalPage = (this.totalSize /pageSize)  + 1;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Page [currPage=" + currPage + ", pageSize=" + pageSize + ", newsList=" + newsList + ", totalSize="
+				+ totalSize + ", totalPage=" + totalPage + "]";
+	}
+	
+	
 	
 }

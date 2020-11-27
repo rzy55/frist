@@ -12,7 +12,7 @@ public class CommentsDaoImpl extends BaseDao implements CommentsDao {
 	@Override
 	public List<Comment> getCommentsById(int nid) throws SQLException {
 	    List<Comment> list = new ArrayList<Comment>();
-		String sql="select * from comment where nid=? order by cdate desc";
+		String sql="select * from comments where cnid=? order by cdate desc";
 		ResultSet rs = excuteQuery(sql,nid);
 		while(rs.next()) {
 			Comment comment = new Comment();

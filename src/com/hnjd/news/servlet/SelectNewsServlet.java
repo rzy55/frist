@@ -46,12 +46,13 @@ public class SelectNewsServlet extends HttpServlet {
 		NewsDao newsDao = new NewsDaoImpl();
 		News newsById = new News();
 		
-		CommentsDao commentsDao=new CommentsDaoImpl();
+		CommentsDao commentsDao = new CommentsDaoImpl();
 		try {
 			newsById = newsDao.getNewsById(nid);
 			List<Comment> commentsByNid = commentsDao.getCommentsById(nid);
-			request.setAttribute("newsById", newsById);
 			request.setAttribute("commentsByNid", commentsByNid);
+			request.setAttribute("newsById", newsById);
+			
 		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

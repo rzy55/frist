@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +9,11 @@
 </head>
 <body>
       <table>
+  
+      <c:forEach begin="1" end="${page.totalPage }" step="1" var="i">
+                <a href="${pageContext.request.contextPath }/PageNewsServlet?contPage="+i+"&pageSize=10">下一页</a>
+      </c:forEach>
+      
 			<tr>
 				<th><input type="submit" value="删除所选"></th>
 				<th>新闻标题</th>
@@ -36,11 +42,6 @@
 		每页显示记录数：${page.pageSize}<br>
 		当前页数数：${page.currPage}<br>
 		总页数：${page.totalPage}<br>
-		
-		<c:forEach begin="1" end="${page.totalPage}" step="1" var="num">
-			<a href="${pageContext.request.contextPath}/SelectNewsByPage?currPage=${num}&pageSize=10">${num}<a>
-		</c:forEach>
-		
 		
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.hnjd.news.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -43,7 +44,7 @@ public class PageNewsServlet extends HttpServlet {
 		
 		NewsDao newsDao= new NewsDaoImpl();
 		try {
-			newsByPage = newsDao.getNewsByPage(m, n);
+			newsByPage = newsDao.getNewsByPage(m,n);
 			
 			page.setNewsList(newsByPage);
 			page.setCurrPage(m);
@@ -55,7 +56,7 @@ public class PageNewsServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+ 
 		request.setAttribute("page", page);
 		request.getRequestDispatcher("/selectNewsByPage.jsp").forward(request, response);
 	}
