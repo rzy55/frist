@@ -4,6 +4,7 @@ public class User {
 	private int uid;
 	private String uname;
 	private String upwd;
+	
 	public int getUid() {
 		return uid;
 	}
@@ -21,6 +22,6 @@ public class User {
 	}
 	public void setUpwd(String upwd) {
 		this.upwd = upwd;
-	}
 	
+	}
 }

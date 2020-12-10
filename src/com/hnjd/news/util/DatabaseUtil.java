@@ -1,10 +1,7 @@
 package com.hnjd.news.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 
 /**
  * 数据库连接与关闭工具类??
